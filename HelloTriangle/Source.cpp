@@ -35,18 +35,26 @@ const char* frag_source = ""
 "    frag_color = color0;\n"
 "}\n";
 
-// Vertex positions array
+// Vertex positions array (left, right, top)
 const float positions[] = {
-	-0.5, -0.5,
-	0.0,  0.5,
-	0.5, -0.5
+	-0.5, -1.0,
+	0.5, -1.0,
+	0.0, 0.0,
+
+	-0.5, 1.0,
+	0.5, 1.0,
+	0.0, 0.0
 };
 
 // Vertices RGBA colors array
 const float colors[] = {
 	1, 0, 0, 1,
 	0, 1, 0, 1,
-	0, 0, 1, 1
+	0, 0, 1, 1,
+
+	1, 0, 0, 1,
+	0, 1, 0, 1,
+	0, 0, 1, 1,
 };
 
 /* Main */
@@ -138,7 +146,7 @@ int main() {
 		// Binds VAO to current shader program
 		glBindVertexArray(vao);
 		// Draws VAO arrays
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 
 		glfwSwapBuffers(window);
 	}
