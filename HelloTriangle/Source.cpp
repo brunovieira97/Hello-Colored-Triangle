@@ -13,9 +13,12 @@ using namespace std;
 #include <assert.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+// Using Shader header from LearnOpenGL tutorials, so shaders are read from external files.
+#include "Shader.h"		
 
 /* Constant declarations */
 // Vertex source
+/*
 const char* vert_source = ""
 "#version 410\n"
 "in vec2 position;\n"
@@ -34,6 +37,7 @@ const char* frag_source = ""
 "void main() {\n"
 "    frag_color = color0;\n"
 "}\n";
+*/
 
 // Vertex positions array (left, right, top)
 const float positions[] = {
@@ -79,35 +83,38 @@ int main() {
 
 	/* Triangle setup*/
 	// Creates shader program, vertex and fragment shaders
-	unsigned int shader_program = glCreateProgram();
-	unsigned int vs = glCreateShader(GL_VERTEX_SHADER);
-	unsigned int fs = glCreateShader(GL_FRAGMENT_SHADER);
+	//unsigned int shader_program = glCreateProgram();
+
+	Shader shader_program("../shaders/transformations.vs", "../shaders/transformations.frag");
+
+	//unsigned int vs = glCreateShader(GL_VERTEX_SHADER);
+	//unsigned int fs = glCreateShader(GL_FRAGMENT_SHADER);
 
 	enum { POSITION_ATTRIB_LOC, COLOR_ATTRIB_LOC };
 
 	// Applies shader's source code (constant)
-	glShaderSource(vs, 1, &vert_source, NULL);
-	glShaderSource(fs, 1, &frag_source, NULL);
+	//glShaderSource(vs, 1, &vert_source, NULL);
+	//glShaderSource(fs, 1, &frag_source, NULL);
 
 	// Compiling both shaders
-	glCompileShader(vs);
-	glCompileShader(fs);
+	//glCompileShader(vs);
+	//glCompileShader(fs);
 
 	// Attaches vertex shader and fragment shader to current shader program
-	glAttachShader(shader_program, vs);
-	glAttachShader(shader_program, fs);
+	//glAttachShader(shader_program, vs);
+	//glAttachShader(shader_program, fs);
 
 	// Binds attribute pointers to the shader program
-	glBindAttribLocation(shader_program, POSITION_ATTRIB_LOC, "position");
-	glBindAttribLocation(shader_program, COLOR_ATTRIB_LOC, "color");
+	//glBindAttribLocation(shader_program, POSITION_ATTRIB_LOC, "position");
+	//glBindAttribLocation(shader_program, COLOR_ATTRIB_LOC, "color");
 
 	// Links shader program
-	glLinkProgram(shader_program);
-	glValidateProgram(shader_program);
+	//glLinkProgram(shader_program);
+	//glValidateProgram(shader_program);
 
 	// Shader already linked, can be destroyed
-	glDeleteShader(vs);
-	glDeleteShader(fs);
+	//glDeleteShader(vs);
+	//glDeleteShader(fs);
 
 	/* Buffers */
 	enum { POSITION, COLOR, NUM_BUFFERS };
@@ -142,7 +149,8 @@ int main() {
 		glfwWaitEvents();
 		glClear(GL_COLOR_BUFFER_BIT);
 		// Using shader program
-		glUseProgram(shader_program);
+		//glUseProgram(shader_program);
+		shader_program.Use();
 		// Binds VAO to current shader program
 		glBindVertexArray(vao);
 		// Draws VAO arrays
