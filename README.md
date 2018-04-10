@@ -1,2 +1,3 @@
-# Lista de Exercícios 1
-Primeira lista de exercícios da disciplina de Processamento Gráfico na Unisinos (2018/1).
+#Processamento Gráfico - Unisinos (2018/1)
+Repositório central para os conteúdos da disciplina de Processamento Gráfico.
+
