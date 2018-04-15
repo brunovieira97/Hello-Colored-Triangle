@@ -42,7 +42,7 @@ void SceneManager::initializeGraphics() {
 	glewInit();
 
 	// Build and compile our shader program
-	addShader("../shadersMovimentoObjeto/transformations.vs", "../shadersMovimentoObjeto/transformations.frag");
+	addShader("Shaders/transformations.vs", "Shaders/transformations.frag");
 
 	//setup the scene -- LEMBRANDO QUE A DESCRIÇÃO DE UMA CENA PODE VIR DE ARQUIVO(S) DE 
 	// CONFIGURAÇÃO
